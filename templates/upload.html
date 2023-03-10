@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Video</title>
+    <script>
+        function validateFileSize(inputElement) {
+            const maxFileSize = 100 * 1024 * 1024; // 10MB maximum file size
+            if (inputElement.files[0].size > maxFileSize) {
+                inputElement.setCustomValidity(`File size exceeds ${maxFileSize/1024/1024}MB.`);
+            } else {
+                inputElement.setCustomValidity('');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Upload Video</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.video.label(class="form-control-label") }}
+            {{ form.video(onchange="validateFileSize(this)") }}
+            {% for error in form.video.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+</body>
+</html>
