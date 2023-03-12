@@ -1,6 +1,6 @@
 # Inception v3 Object Detection
 
-Deployed Web Application:
+Deployed Web Application: http://objectdetection-env-2.eba-m988fzxm.us-west-2.elasticbeanstalk.com/
 
 # Group Members
 
